@@ -115,7 +115,7 @@ List::~List()
     {
         previous_node = current_node;
         current_node = current_node->getNext();
-        free(previous_node);
+        delete previous_node;
     } while (current_node != nullptr);
 }
 
@@ -129,7 +129,7 @@ void List::remove(int loc)
 
     if (loc == 0)
     {
-        free(previous_node);
+        delete previous_node;
         this->head = current_node;
         return;
     }
@@ -142,7 +142,7 @@ void List::remove(int loc)
     }
 
     previous_node->setNext(current_node->getNext());
-    free(current_node);
+    delete current_node;
     return;
 }
 
